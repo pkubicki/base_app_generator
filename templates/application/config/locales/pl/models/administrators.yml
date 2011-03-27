@@ -1,0 +1,15 @@
+pl:
+  activerecord:
+    models:
+      administrator:
+        one: Administrator
+    attributes:
+      administrator:
+        name: Imię
+        surname: Nazwisko
+  helpers:
+    submit:
+      administrator:
+        submit: Zapisz
+        create: Dodaj
+        update: Uaktualnij

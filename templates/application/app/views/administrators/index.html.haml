@@ -1,0 +1,52 @@
+%h2
+  = t(:'.header')
+
+= form_for @search, :url => administrators_path, :html => {:method => :get} do |f|
+
+  %table.list
+    %tr
+      %th
+        = t(:'shared.lp')
+      %th
+        = f.sort_link :name, Administrator.human_attribute_name(:name)
+      %th
+        = f.sort_link :surname, Administrator.human_attribute_name(:surname)
+      %th
+        = f.sort_link :user_login, User.human_attribute_name(:login)
+      %th
+        = f.sort_link :user_email, User.human_attribute_name(:email)
+      %th
+
+    %tr.search
+      %td
+      %td
+        = f.text_field :name_contains
+      %td
+        = f.text_field :surname_contains
+      %td
+        = f.text_field :user_login_contains
+      %td
+        = f.text_field :user_email_contains
+      %td
+        = f.submit t(:'shared.search')
+
+    - i=0
+    - @administrators.each do |administrator|
+      %tr{:class => cycle("odd", "even")}
+        %td
+          = i+=1
+        %td
+          = administrator.name
+        %td
+          = administrator.surname
+        %td
+          = administrator.user.login
+        %td
+          = administrator.user.email
+        %td.last
+          = link_to(t(:'shared.edit'), edit_administrator_path(administrator)) if allowed_to?(:edit)
+
+= will_paginate @administrators
+
+= link_to(t(:'shared.new'), new_administrator_path, :id => 'new') if allowed_to?(:new)
+

@@ -1,0 +1,5 @@
+Description:
+    Model generator
+
+Example:
+    rails generate base_app_model ModelName

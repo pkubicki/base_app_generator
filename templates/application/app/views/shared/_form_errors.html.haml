@@ -1,0 +1,7 @@
+- if object.errors.any?
+  .error-explanation
+    %h3= t(".#{object.class.to_s.underscore}.header")
+    %ul
+      - object.errors.full_messages.each do |msg|
+        %li= msg
+

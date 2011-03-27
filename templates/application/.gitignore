@@ -1,0 +1,16 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+config/database.yml
+*.gem
+vendor/cache/**/*
+vendor/plugins/**/*
+vendor/ruby/**/*
+.DS_Store
+nbproject
+Thumbs.db
+Desktop.ini
+*.project
+db/schema.rb
+public/system/**/*

@@ -1,0 +1,14 @@
+%h2
+  = t(:'.header')
+
+.attributes
+  %ol
+<% for attribute in attributes -%>
+    %li
+      .title= <%= singular_table_name.camelize %>.human_attribute_name(:<%= attribute.name %>)
+      .value= @<%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+
+= link_to(t(:'shared.back'), <%= index_helper %>_path, :class => 'back')
+= link_to(t(:'shared.edit'), edit_<%= singular_table_name %>_path(@<%= singular_table_name %>)) if allowed_to?(:edit)
+= link_to(t(:'shared.destroy'), <%= singular_table_name %>_path(@<%= singular_table_name %>), :class => 'destroy', :method => :delete, :confirm => t(:'shared.destroy_confirmation')) if allowed_to?(:destroy)

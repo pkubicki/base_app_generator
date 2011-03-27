@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require "rubygems"
+require File.expand_path("../../lib/base_app_generator", __FILE__)
+BaseAppGenerator::AppBuilder.start

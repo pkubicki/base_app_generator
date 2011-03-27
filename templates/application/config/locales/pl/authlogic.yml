@@ -1,0 +1,23 @@
+pl:
+  authlogic:
+    error_messages:
+      login_blank: "musi zostać podany"
+      login_not_found: "jest nieprawidłowy"
+      login_invalid: "zawiera niedozwolone znaki"
+      email_invalid: "ma nieprawidłowy format"
+      password_blank: "nie może być puste"
+      password_invalid: "jest nieprawidłowe"
+      not_active: "Twoje konto nie zostało jeszcze aktywowane"
+      not_confirmed: "Twoje konto nie zostało jeszcze potwierdzone"
+      not_approved: "Twoje konto nie zostało jeszcze zaakceptowane"
+      no_authentication_details: "Aby się zalogować musisz podać login i hasło"
+      consecutive_failed_logins_limit_exceeded: "Limit ilości niepoprawnych logowań został wyczerpany. Konto zostało zablokowane."
+    models:
+      user_session: "Logowanie"
+    attributes:
+      user_session:
+        login: "Login"
+        password: "Hasło"
+        email: "Adres email"
+        remember_me: "Zapamiętaj mnie"
+

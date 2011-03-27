@@ -1,0 +1,21 @@
+pl:
+  static_pages:
+    home:
+      header: Witaj
+      text:
+        Cras adipiscing massa ut lorem mollis commodo.
+        Ut convallis aliquam odio luctus dignissim.
+        Praesent id ante ac augue mollis ultricies.
+        Nulla quis sapien a eros eleifend pellentesque nec tincidunt nisl.
+        Duis quis diam eget leo porttitor pretium.
+        Suspendisse potenti. Nulla dictum porttitor velit ut hendrerit.
+        Ut sed mi est, quis fermentum leo.
+        Nulla felis eros, volutpat non mollis ut, lobortis nec nunc.
+        Etiam vulputate sapien ut orci dapibus ullamcorper.
+    admin_dashboard:
+      header: Witamy w systemie
+      text:
+        Proin molestie molestie velit.
+        Nam sed massa lectus.
+        Curabitur accumsan ultricies velit, sed gravida velit condimentum ac.
+        

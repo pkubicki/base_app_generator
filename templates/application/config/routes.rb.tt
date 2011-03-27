@@ -1,0 +1,20 @@
+<%= name_const %>::Application.routes.draw do
+
+  resources :administrators,
+    :except => [:show, :destroy]
+
+  # user/sessions
+  resource :session,
+    :controller => 'users/sessions',
+    :only => [:new, :create, :destroy]
+
+  match 'sign_in' => 'users/sessions#create', :via => :post, :as => 'session'
+  match 'sign_in' => 'users/sessions#new', :as => 'sign_in'
+  match 'sign_out' => 'users/sessions#destroy', :via => :delete, :as => 'sign_out'
+
+  # static_pages
+  match ":id" => "static_pages#show", :constraints => {:id => /[a-z,_]+/}
+
+  root :to => "static_pages#show", :defaults => {:id => 'home'}
+end
+

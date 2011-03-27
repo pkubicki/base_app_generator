@@ -1,0 +1,5 @@
+Description:
+    Locale generator for resources
+
+Example:
+    rails generate resource_locale [attributes]

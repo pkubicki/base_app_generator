@@ -1,0 +1,5 @@
+Description:
+    Cucumber features generator. It might be helpfull but still You have to modify generated feature manually.
+
+Example:
+    rails generate cucumber_features [attributes]

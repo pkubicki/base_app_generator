@@ -1,0 +1,7 @@
+index: deny_all
+show: deny_all
+new: deny_all
+create: deny_all
+edit: deny_all
+update: deny_all
+destroy: deny_all

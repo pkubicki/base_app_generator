@@ -1,0 +1,16 @@
+= f.fields_for(:user) do |uf|
+  %fieldset
+    %ol
+      %li
+        = uf.label User.human_attribute_name(:login), :class => :label
+        = uf.text_field :login, :class => 'text_field'
+      %li
+        = uf.label User.human_attribute_name(:email), :class => :label
+        = uf.text_field :email, :class => 'text_field'
+      %li
+        = uf.label User.human_attribute_name(:password), :class => :label
+        = uf.password_field :password, :value => nil, :class => 'text_field'
+      %li
+        = uf.label User.human_attribute_name(:password_confirmation), :class => :label
+        = uf.password_field :password_confirmation, :value => nil, :class => 'text_field'
+

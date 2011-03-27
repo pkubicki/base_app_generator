@@ -1,0 +1,14 @@
+pl:
+  administrators:
+    index:
+      header: Lista administratorów
+    new:
+      header: Nowy administrator
+    edit:
+      header: Edycja administratora
+  flash:
+    administrators:
+      create:
+        alert: 'Podane dane są nieprawidłowe lub niekompletne.'
+      update:
+        alert: 'Podane dane są nieprawidłowe lub niekompletne.'

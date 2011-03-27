@@ -1,0 +1,39 @@
+%fieldset
+  %ol
+<% for attribute in attributes -%>
+    %li
+      = f.label :<%= attribute.name %>, :class => :label
+<% unless attribute.reference? -%>
+      = f.<%= attribute.form_field_type %> :<%= attribute.name %>
+<% else -%>
+      = f.collection_select(:<%= attribute.name %>_id, <%= attribute.name.camelize %>.all, :id, :to_s, :prompt => true)
+<% end -%>
+      %p.inline-hints
+<% if attribute.date? -%>
+      - content_for(:javascripts) do
+        :javascript
+          $(function() {
+            $("#<%= singular_table_name %>_<%= attribute.name %>").datepicker({ 
+              dateFormat: 'yy-mm-dd'
+            });
+          });
+<% end -%>
+<% if attribute.datetime? -%>
+      - content_for(:javascripts) do
+        :javascript
+          $(function() {
+            $("#<%= singular_table_name %>_<%= attribute.name %>").datetimepicker({ 
+              dateFormat: 'yy-mm-dd', 
+              timeFormat: 'hh:mm:ss',
+              showSecond: true
+            });
+          });
+<% end -%>
+<% end -%>
+
+%fieldset.buttons
+  %ol
+    %li
+      = f.submit
+    %li
+      = link_to(t(:'shared.cancel'), <%= index_helper %>_path, :class => 'cancel')

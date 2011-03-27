@@ -1,0 +1,23 @@
+defaults: &defaults
+  admin_email: admin@example.com
+  smtp:
+    from: "<%= name %> <mailer@example.com>"
+    user_name: mailer@example.com
+    password: secret
+    port: 25
+    address: mx.example.com
+    domain: example.com
+    authentication: plain
+    enable_starttls_auto: false
+
+development:
+  <<: *defaults
+  site_url: http://localhost:3000
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  site_url: http://example.com
+

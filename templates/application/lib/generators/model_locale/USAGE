@@ -1,0 +1,5 @@
+Description:
+    Locale generator for models
+
+Example:
+    rails generate model_locale [attributes]

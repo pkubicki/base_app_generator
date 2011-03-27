@@ -1,0 +1,9 @@
+pl:
+  layouts:
+    admin:
+      sign_in: Zaloguj
+      sign_out: Wyloguj
+      copyright: Copyright &copy; %{year} by ...
+      # menu admin:
+      home: Strona główna
+      administrators: Administratorzy

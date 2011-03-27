@@ -1,0 +1,31 @@
+pl:
+  <%= table_name %>:
+    index:
+      header: Lista <%= table_name %>
+    new:
+      header: Nowy <%= singular_table_name %>
+    edit:
+      header: Edycja <%= singular_table_name %>
+    show:
+      header: Szczegóły <%= singular_table_name %>
+  flash:
+    <%= table_name %>:
+      create:
+        alert: 'Podane dane są nieprawidłowe lub niekompletne.'
+      update:
+        alert: 'Podane dane są nieprawidłowe lub niekompletne.'
+  activerecord:
+    models:
+      <%= singular_table_name %>:
+        one: <%= human_name %>
+    attributes:
+      <%= singular_table_name %>:
+<% for attribute in attributes -%>
+        <%= attribute.name %>: <%= attribute.human_name %>
+<% end -%>
+  helpers:
+    submit:
+      <%= singular_table_name %>:
+        submit: Zapisz
+        create: Dodaj
+        update: Uaktualnij

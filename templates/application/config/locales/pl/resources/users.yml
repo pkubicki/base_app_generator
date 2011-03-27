@@ -1,0 +1,13 @@
+pl:
+  users:
+    sessions:
+      new:
+        header: Logowanie
+        sign_in: Zaloguj
+  flash:
+    users:
+      sessions:
+        create:
+          notice: 'Logowanie zakończone powodzeniem.'
+        destroy:
+          notice: 'Wylogowanie zakończone powodzeniem.'

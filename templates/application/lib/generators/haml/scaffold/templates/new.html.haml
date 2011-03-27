@@ -1,0 +1,5 @@
+%h2
+  = t(:'.header')
+
+= form_for(@<%= singular_table_name %>, :url => <%= plural_table_name %>_path, :html => { :class => :form }) do |f|
+  = render(:partial => "form", :locals => {:f => f})

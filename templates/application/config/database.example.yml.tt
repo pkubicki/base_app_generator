@@ -1,0 +1,25 @@
+defaults: &defaults
+  adapter: mysql
+  encoding: utf8
+  pool: 5
+  host: localhost
+  username: 
+  password: 
+
+development:
+  <<: *defaults
+  reconnect: false
+  database: <%= name %>_development
+
+test: &test
+  <<: *defaults
+  reconnect: false
+  database: <%= name %>_test
+
+production:
+  <<: *defaults
+  reconnect: true
+  database: <%= name %>_production
+
+cucumber:
+  <<: *test

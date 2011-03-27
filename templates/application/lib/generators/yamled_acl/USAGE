@@ -1,0 +1,8 @@
+Description:
+    Generates yamled_acl persmiisions file.
+
+Example:
+    rails generate yamled_acl controller name.
+
+    This will create:
+        #{controller_name}.yml

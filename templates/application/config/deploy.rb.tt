@@ -1,0 +1,69 @@
+require 'capistrano_recipes'
+require 'bundler/capistrano'
+
+default_run_options[:pty] = true
+
+set :user, "<%= name %>.example.com"
+set :application, "<%= name %>.example.com"
+
+set :scm, "git"
+set :repository, "git@github.com:user_name/<%= name %>.git"
+set :scm_user, 'user_name'
+set :branch, "master"
+set :deploy_via, :remote_cache
+ssh_options[:forward_agent] = true
+
+set :server, :passenger
+set :use_sudo, false
+
+set :deploy_to, "/home/httpd/#{application}"
+set :keep_releases, 3
+
+set :rake, '/var/lib/gems/1.8/bin/rake'
+set :bundle_cmd, '/var/lib/gems/1.8/bin/bundle'
+
+set :domain, '<%= name %>.example.com'
+role :web, domain
+role :app, domain
+role :db,  domain, :primary => true
+
+namespace :passenger do
+  desc "Restart Rails app running under Phusion Passenger by touching restart.txt"
+  task :bounce, :roles => :app do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+
+  desc "Inspect Phusion Passenger's memory usage. Assumes binaries are located in /opt/ruby-enterprise."
+  task :memory, :roles => :app do
+    run "/opt/ruby-enterprise/bin/passenger-memory-stats"
+  end
+
+  desc "Inspect Phusion Passenger's internal status. Assumes binaries are located in /opt/ruby-enterprise."
+  task :status, :roles => :app do
+    run "/opt/ruby-enterprise/bin/passenger-status"
+  end
+end
+
+after :deploy, 'deploy:cleanup'
+
+namespace :symlink do
+  task :shared_config_files, :roles => :app do
+    config_files = %w(database.yml)
+    config_files.each do |file_path|
+      puts file_path
+      begin
+        # run "rm #{config_path}#{file_path}"
+        run "ln -nfs #{shared_config_path}#{file_path} #{config_path}#{file_path}"
+      rescue => e
+        puts "Problem linking to #{file_path}. Be sure file already exists in #{shared_config_path}."
+        puts "Error: #{e}"
+      end
+    end if config_files
+  end
+end
+
+#after "deploy:update_code" do
+#  ['sample/path'].each do |share|
+#    run "ln -s #{shared_path}/#{share} #{release_path}/#{share}"
+#  end
+#end

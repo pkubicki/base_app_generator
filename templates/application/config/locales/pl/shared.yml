@@ -1,0 +1,27 @@
+ pl:
+
+  helpers:
+    submit:
+      submit: Zapisz
+      create: Dodaj
+      update: Uaktualnij
+    select:
+      prompt: "-- Wybierz --"
+    
+  shared:
+    app_name: base app
+    show: Szczegóły
+    new: Dodaj
+    edit: Edycja
+    destroy: Usuń
+    destroy_confirmation: "Czy na pewno chcesz usunąć wybrany obkekt?"
+    back: Powrót
+    save: Zapisz
+    cancel: Anuluj
+    search: Szukaj
+
+    lp: lp
+    '404':
+      header: The page you were looking for doesn't exist (404)
+      text: You may have mistyped the address or the page may have moved.
+  

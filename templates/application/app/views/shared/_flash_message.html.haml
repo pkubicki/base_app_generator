@@ -1,0 +1,5 @@
+- if flash.keys.size > 0
+  - flash.each do |type, message|
+    %div{:class => "#{type}"}
+      = message
+

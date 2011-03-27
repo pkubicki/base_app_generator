@@ -1,0 +1,77 @@
+%h2
+  = t(:'.header')
+
+= form_for @search, :url => <%= plural_table_name %>_path, :html => {:method => :get} do |f|
+  %table.list
+    %tr
+      %th
+        = t(:'shared.lp')
+<% for attribute in attributes -%>
+      %th
+        = f.sort_link :<%= attribute.name %>, <%= singular_table_name.capitalize %>.human_attribute_name(:<%= attribute.name %>)
+<% end -%>
+      %th
+    %tr.search
+      %td
+<% for attribute in attributes -%>
+      %td
+<% unless attribute.reference? -%>
+<% unless attribute.within_range? -%>
+        = f.<%= attribute.search_field_type %> :<%= attribute.name %><%= attribute.search_suffix %>
+<% else -%>
+        = f.<%= attribute.search_field_type %> :<%= attribute.name %>_gte
+        = f.<%= attribute.search_field_type %> :<%= attribute.name %>_lte
+<% if attribute.date? -%>
+        - content_for(:javascripts) do
+          :javascript
+            $(function() {
+              $("#search_<%= attribute.name %>_gte").datepicker({ 
+                dateFormat: 'yy-mm-dd'
+              });
+            });
+            $(function() {
+              $("#search_<%= attribute.name %>_lte").datepicker({ 
+                dateFormat: 'yy-mm-dd'
+              });
+            });
+<% end -%>
+<% if attribute.datetime? -%>
+        - content_for(:javascripts) do
+          :javascript
+            $(function() {
+              $("#search_<%= attribute.name %>_gte").datetimepicker({ 
+                dateFormat: 'yy-mm-dd', 
+                timeFormat: 'hh:mm:ss',
+                showSecond: true
+              });
+            });
+            $(function() {
+              $("#search_<%= attribute.name %>_lte").datetimepicker({ 
+                dateFormat: 'yy-mm-dd', 
+                timeFormat: 'hh:mm:ss',
+                showSecond: true
+              });
+            });
+<% end -%>
+<% end -%>
+<% end -%>
+<% end -%>
+      %td
+        = f.submit t(:'shared.search')
+    - i=0
+    - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+      %tr{:id => dom_id(<%= singular_table_name %>), :class => cycle("odd", "even")}
+        %td
+          = i+=1
+<% for attribute in attributes -%>
+        %td
+          = <%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+        %td.last
+          = link_to(t(:'shared.show'), <%= singular_table_name %>_path(<%= singular_table_name %>)) if allowed_to?(:show)
+          = link_to(t(:'shared.edit'), edit_<%= singular_table_name %>_path(<%= singular_table_name %>)) if allowed_to?(:edit)
+          = link_to(t(:'shared.destroy'), <%= singular_table_name %>_path(<%= singular_table_name %>), :class => 'destroy', :method => :delete, :confirm => t(:'shared.destroy_confirmation')) if allowed_to?(:destroy)
+
+= will_paginate @<%= plural_table_name %>
+
+= link_to(t(:'shared.new'), new_<%= singular_table_name %>_path, :id => 'new') if allowed_to?(:new)
