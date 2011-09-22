@@ -3,6 +3,7 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 config/database.yml
+config/settings.yml
 *.gem
 vendor/cache/**/*
 vendor/plugins/**/*
@@ -14,3 +15,6 @@ Desktop.ini
 *.project
 db/schema.rb
 public/system/**/*
+.sass-cache/
+public/assets/
+

@@ -1,40 +1,44 @@
 run 'rm Gemfile'
 create_file 'Gemfile', "source 'http://rubygems.org'\n"
-gem "rails", "~> 3.0.0"
-gem 'mysql', "~> 2.8.1"
-gem "haml", "~> 3.0.25"
-gem "haml-rails", "~> 0.3.4"
-gem "jquery-rails", "~> 0.2"
-gem "responders", "~> 0.6.2"
-gem "yamled_acl", "~> 0.2.0"
-gem 'authlogic', :git => 'http://github.com/odorcicd/authlogic.git', :branch => 'rails3'
-gem 'will_paginate', :git => 'http://github.com/mislav/will_paginate.git', :branch => 'rails3'
-gem 'meta_search', "~> 1.0.1"
-gem 'capistrano', "~> 2.5.19", :group => :development
-gem 'capistrano-recipes', "~> 0.5.0", :group => :development
-gem 'rails3-generators', "~> 0.17.4", :group => :development
-gem 'rspec-rails', "~> 2.5.0", :group => :test
-gem "rcov", "~> 0.9.9", :group => :test
+gem "rails", "~> 3.1.0"
+gem "mysql2", "~> 0.3"
+gem "haml-rails", "~> 0.3"
+gem "jquery-rails", "~> 1.0"
+gem "responders", "~> 0.6"
+gem "yamled_acl", "~> 0.2"
+gem "authlogic", "~> 3.0"
+gem "will_paginate", "~> 3.0"
+gem "meta_search", "~> 1.1"
+gem 'sass-rails', " ~> 3.1"  , :group => :assets
+gem 'coffee-rails', " ~> 3.1", :group => :assets
+gem 'uglifier', :group => :assets
+gem "yui-compressor", "~> 0.9", :group => :production
+gem "capistrano", "= 2.5.20", :group => :development
+gem "capistrano-recipes", "= 0.5", :group => :development
+gem "rails3-generators", "~> 0.17", :group => :development
+gem "rspec-rails", "~> 2.6", :group => :test
+gem "rcov_rails", "~> 0.3", :group => :test
 gem "fuubar", :group => :test
-gem 'factory_girl', "~> 1.3.3", :group => :test
-gem 'factory_girl_rails', "~> 1.0.1", :group => :test
-gem 'capybara', "~> 0.4.1", :group => :cucumber
-gem 'database_cleaner', "~> 0.6.4", :group => :cucumber
-gem 'cucumber', "~> 0.10.0", :group => :cucumber
-gem 'cucumber-rails', "~> 0.3.2", :group => :cucumber
-gem 'launchy', "~> 0.3.7", :group => :cucumber
-gem 'pickle', "~> 0.4.4", :group => :cucumber
-gem "spork", "~> 0.8.4", :group => :cucumber
+gem "factory_girl_rails", "~> 1.2", :group => :test
+gem "database_cleaner", "~> 0.6", :group => :cucumber
+gem "cucumber-rails", "~> 1.0", :group => :cucumber
+gem "launchy", "~> 2.0", :group => :cucumber
+gem "pickle", "~> 0.4", :group => :cucumber
+gem "spork", "~> 0.8", :group => :cucumber
 run 'bundle install'
 
-generate 'jquery:install'
 generate 'rspec:install'
 generate 'cucumber:install --capybara --rspec --spork'
 generate 'pickle --path --email'
 
 run 'rm .gitignore'
+run 'rm app/assets/images/rails.png'
+run 'rm app/assets/stylesheets/application.css'
+run 'rm app/assets/javascripts/application.js'
 run 'rm app/controllers/application_controller.rb'
 run 'rm app/helpers/application_helper.rb'
+run 'rm app/views/layouts/application.html.erb'
+run 'rm app/models/.gitkeep'
 run 'rm config/application.rb'
 run 'rm config/routes.rb'
 run 'rm config/database.yml'

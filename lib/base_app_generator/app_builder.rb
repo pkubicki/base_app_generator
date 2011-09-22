@@ -10,7 +10,22 @@ module BaseAppGenerator
     source_root File.expand_path("../../..", __FILE__)
 
     def new
-      run "rails new #{name} --skip-prototype --skip-test-unit --template=#{self.class.source_root}/templates/template.rb"
+      run "rails new #{name} --skip-prototype --skip-test-unit --database=mysql --template=#{self.class.source_root}/templates/template.rb"
+    end
+    
+    def modify_environments_production
+      inside(name) do
+        gsub_file(
+          'config/environments/production.rb', 
+          '# config.assets.precompile += %w( search.js )',
+          'config.assets.precompile += %w( admin.js admin.css )'
+        )
+        gsub_file(
+          'config/environments/production.rb', 
+          'config.assets.compress = true', 
+          "config.assets.compress = true\n  # Choose the compressors to use\n  config.assets.js_compressor  = :uglifier\n  config.assets.css_compressor = :yui"
+        )
+      end
     end
     
     def copy_template_files
