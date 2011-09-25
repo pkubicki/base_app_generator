@@ -1,8 +1,8 @@
-%h2
+%h1
   = t(:'.header')
 
 = form_for @search, :url => <%= plural_table_name %>_path, :html => {:method => :get} do |f|
-  %table.list
+  %table.table-data
     %tr
       %th
         = t(:'shared.lp')
@@ -74,4 +74,4 @@
 
 = will_paginate @<%= plural_table_name %>
 
-= link_to(t(:'shared.new'), new_<%= singular_table_name %>_path, :id => 'new') if allowed_to?(:new)
+= link_to(t(:'shared.new'), new_<%= singular_table_name %>_path, :class => 'btn-add') if allowed_to?(:new)

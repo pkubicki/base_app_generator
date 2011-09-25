@@ -16,5 +16,8 @@
   match ":id" => "static_pages#show", :constraints => {:id => /[a-z,_]+/}
 
   root :to => "static_pages#show", :defaults => {:id => 'home'}
+  
+  # handles routing errors
+  match '*url', :to => 'application#render_404'
 end
 

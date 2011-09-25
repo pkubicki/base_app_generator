@@ -1,0 +1,33 @@
+.head {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.head .logo {
+  font-size: 35px;
+  color: #3D3B3F;
+  text-shadow: 1px 1px 0px #D8D1DF;
+  font-weight: bold;
+}
+
+.head a.logo:link, 
+.head a.logo:visited {
+  display: block;
+  text-decoration: none;
+}
+
+.head a.logo:hover, 
+.head a.logo:active {
+}
+
+.head .sign-in-sin-out-wrap {
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
+.head .sign-in-sin-out-wrap input {
+  cursor: pointer;
+}
+

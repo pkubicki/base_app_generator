@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   before_filter :authorize
   responders :flash
   layout :current_layout
+  rescue_from ActionView::MissingTemplate, :with => :render_404
+
+  def render_404
+    render :file => "shared/404", :status => :not_found
+  end
 
   private
 

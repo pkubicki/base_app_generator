@@ -1,13 +1,10 @@
 /*
-  *= require admin/reset
-  *= require admin/defaults
-  *= require admin/type
-  *= require admin/forms
-  *= require admin/lists
-  *= require admin/screen
-  *= require admin/attributes
-  *= require admin/header
-  *= require admin/index
+  *= require reset
+  *= require 960_12_col
+  *= require text
+
+  *= require  admin/global  
+  *= require_tree ./admin/objects
   
   *=  require jquery-ui
   *=  require jquery-ui-timepicker-addon

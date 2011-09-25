@@ -4,12 +4,9 @@ pl:
       user:
         one: Użytkownik
     attributes:
-      user: &user_fields
+      user:
         login: Login
         email: Adres email
         password: Hasło
         password_confirmation: Potwierdzenie hasła
-      administrator:
-        user:
-          <<: *user_fields
 

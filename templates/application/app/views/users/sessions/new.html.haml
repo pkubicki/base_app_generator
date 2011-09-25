@@ -1,24 +1,21 @@
-.blog-entry
-  %h3
-    = t(:'.header')
-  .blog-entry-content
-    - if @user_session.errors.any?
-      - @user_session.errors.full_messages.each do |msg|
-        .alert
-          = msg
-
-    = form_for(@user_session, :url => session_path) do |f|
-      %fieldset
-        = hidden_field_tag :return, params[:return]
-        %ol
-          %li
-            = f.label :login
-            = f.text_field :login
-          %li
-            = f.label :password
-            = f.password_field :password
-      %fieldset.buttons
-        %ol
-          %li
-            = f.submit(t(:'.sign_in'), :id => 'sign_in_btn')
+%h1
+  = t(:'.header')
+- if @user_session.errors.any?
+  - @user_session.errors.full_messages.each do |msg|
+    .message.alert
+      = msg
+= form_for(@user_session, :url => session_path) do |f|
+  %fieldset.form-body
+    = hidden_field_tag :return, params[:return]
+    %ol
+      %li
+        = f.label :login
+        = f.text_field :login
+      %li
+        = f.label :password
+        = f.password_field :password
+  %fieldset.form-buttons
+    %ol
+      %li
+        = f.submit(t(:'.sign_in'), :id => 'sign_in_btn')
 .column-sub-bottom

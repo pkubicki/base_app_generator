@@ -1,17 +1,18 @@
-%fieldset
-  %ol
-    %li
-      = f.label :name, :class => :label
-      = f.text_field :name
-      %p.inline-hints
-    %li
-      = f.label :surname, :class => :label
-      = f.text_field :surname
-      %p.inline-hints
-
-= render(:partial => 'shared/user_form_fields', :locals => {:f => f})
-
-%fieldset.buttons
+.grid_6.alpha
+  = render(:partial => 'shared/user_form_fields', :locals => {:f => f})
+.grid_6.omega
+  %fieldset.form-body
+    %ol
+      %li
+        = f.label :name, :class => :label
+        = f.text_field :name
+        %p.inline-hints
+      %li
+        = f.label :surname, :class => :label
+        = f.text_field :surname
+        %p.inline-hints
+.clear
+%fieldset.form-buttons
   %ol
     %li
       = f.submit
