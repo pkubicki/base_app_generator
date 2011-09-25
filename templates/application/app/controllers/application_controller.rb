@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   responders :flash
   layout :current_layout
   rescue_from ActionView::MissingTemplate, :with => :render_404
+  #rescue_from YamledAcl::ActionNotDefined, :with => :render_404
+  rescue_from YamledAcl::AccessDenied, :with => :redirect_to_default
 
   def render_404
     render :file => "shared/404", :status => :not_found
@@ -31,6 +33,19 @@ class ApplicationController < ActionController::Base
   
   def current_layout
     'admin'
+  end
+  
+  def current_group 
+    @current_group ||= User::Group.new(current_user_group_name)
+  end
+  
+  def redirect_to_default
+    redirect_to case
+    when current_group.administrator?
+      '/admin_dashboard'
+    else
+      root_path
+    end
   end
 
 end

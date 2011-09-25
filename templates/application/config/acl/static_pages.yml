@@ -1,1 +1,7 @@
+# actions:
 show: allow_all
+
+# pages:
+admin_dashboard: administrator
+home: guest
+
