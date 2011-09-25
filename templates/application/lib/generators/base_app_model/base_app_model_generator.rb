@@ -12,7 +12,7 @@ module Rails
         extend_attributes! if respond_to?(:attributes)
       end  
       
-    protected
+      protected
     
       def extend_attributes!
         self.attributes = (attributes || []).map do |a|

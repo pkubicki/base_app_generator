@@ -32,6 +32,34 @@ module BaseAppGenerator
       directory("templates/application", name)
     end
     
+    def pickle_ambiguous_step_comments
+src_str = <<-src
+# create models from a table
+Given(/^the following \#{capture_plural_factory} exists?:?$/) do |plural_factory, table|
+  create_models_from_table(plural_factory, table)
+end
+src
+
+dest_str = <<-dest
+# create models from a table - ambiguous
+# Given(/^the following \#{capture_plural_factory} exists?:?$/) do |plural_factory, table|
+#   create_models_from_table(plural_factory, table)
+# end
+dest
+      inside(name) do
+        gsub_file(
+          'features/step_definitions/pickle_steps.rb', 
+          src_str,
+          dest_str
+        )
+      end
+    end
+    
+# create models from a table
+#Given(/^the following #{capture_plural_factory} exists?:?$/) do |plural_factory, table|
+#  create_models_from_table(plural_factory, table)
+#end
+    
     def initialize_git_repository
       inside(name) do
         run 'git init'

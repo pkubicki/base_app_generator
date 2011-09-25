@@ -3,7 +3,7 @@
     %a{:href => '/admin_dashboard', :class => 'logo'}
       %strong
         = t(:'shared.app_name')
-    .sign-in-sin-out-wrap
+    .sign-in-sign-out-wrap
       - if logged_in?
         = button_to(t(:'.sign_out'), sign_out_path, {:id => 'sign_out_btn', :method => :delete})
       - else
@@ -14,7 +14,7 @@
         %ul
           - if current_user.group.administrator?
             %li
-              = link_to(t(:'.administrators'), administrators_path, {:id => 'administrators'})
+              = link_to(t(:'.administrators'), administrators_path, {:id => 'administrators_menu_lnk'})
   %section.grid_12.body
     = flash_messages
     %article.relative

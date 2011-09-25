@@ -55,5 +55,33 @@
         :text == type
       end
       
+      def number?
+        [:integer, :float, :decimal].include?(type)
+      end
+      
+      def default
+        case
+        when string? 
+          "Lorem"
+        when text? 
+          "Lorem ipsum."
+        when number? 
+          1
+        else
+         super
+        end
+      end
+      
+      def default2
+        case
+        when string? 
+          "Dolos"
+        when text? 
+          "Dolos sit ament."
+        else
+          default
+        end
+      end
+      
     end
   end

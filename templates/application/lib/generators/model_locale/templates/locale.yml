@@ -2,7 +2,7 @@ pl:
   activerecord:
     models:
       <%= singular_table_name %>:
-        one: <%= human_name %>
+        one: <%= human_name.singularize %>
     attributes:
       <%= singular_table_name %>:
 <% for attribute in attributes -%>

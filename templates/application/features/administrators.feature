@@ -8,7 +8,7 @@ Feature: Administrators accounts management
 
   Scenario: Following administrators link
     Given I am on the home page
-    When I follow "administrators"
+    When I follow "administrators_menu_lnk"
     Then I should be on path "/administrators"
 
   Scenario Outline: Browsing administrators accounts list

@@ -7,8 +7,8 @@ Feature: Sign out form administrator account
     Given I am logged in as "administrator"
 
   Scenario: Availability of sing out button
-    Then the "sign_out_btn" button within ".button_to" should contain "Wyloguj"
+    Then the "sign_out_btn" button should contain "Wyloguj" within ".sign-in-sign-out-wrap"
 
   Scenario: Sign out from administrator account
-    When I press "sign_out_btn" within ".button_to"
+    When I press "sign_out_btn" within ".sign-in-sign-out-wrap"
     Then I am on the home page
