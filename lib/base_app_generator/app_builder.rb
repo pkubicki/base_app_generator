@@ -55,10 +55,13 @@ dest
       end
     end
     
-# create models from a table
-#Given(/^the following #{capture_plural_factory} exists?:?$/) do |plural_factory, table|
-#  create_models_from_table(plural_factory, table)
-#end
+    def prepend_cover_me
+      inside(name) do
+        prepend_to_file 'spec/spec_helper.rb' do
+          "require \"cover_me\"\n"
+        end
+      end
+    end
     
     def initialize_git_repository
       inside(name) do

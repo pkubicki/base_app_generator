@@ -17,4 +17,5 @@ db/schema.rb
 public/system/**/*
 .sass-cache/
 public/assets/
-
+coverage/
+coverage.data

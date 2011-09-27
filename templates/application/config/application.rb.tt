@@ -63,8 +63,7 @@ module <%= name_const %>
       g.features :cucumber_features
     end
 
-    require "lib/monkey_patches/string.rb"
-    require "lib/monkey_patches/ostruct_ext.rb"
+    require Rails.root.join("lib/monkey_patches/ostruct_ext.rb")
 
   end
 end

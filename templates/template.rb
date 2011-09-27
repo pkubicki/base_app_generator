@@ -16,10 +16,10 @@ gem "yui-compressor", "~> 0.9", :group => :production
 gem "capistrano", "= 2.5.20", :group => :development
 gem "capistrano-recipes", "= 0.5", :group => :development
 gem "rails3-generators", "~> 0.17", :group => :development
-gem "rspec-rails", "~> 2.6", :group => :test
-gem "rcov_rails", "~> 0.3", :group => :test
-gem "fuubar", :group => :test
-gem "factory_girl_rails", "~> 1.2", :group => :test
+gem "rspec-rails", "~> 2.6", :group => [:development, :test]
+gem "cover_me", "~> 1.2.0", :group => [:development, :test]
+gem "fuubar", :group => [:development, :test]
+gem "factory_girl_rails", "~> 1.2", :group => [:development, :test]
 gem "database_cleaner", "~> 0.6", :group => :cucumber
 gem "cucumber-rails", "~> 1.0", :group => :cucumber
 gem "launchy", "~> 2.0", :group => :cucumber
@@ -30,6 +30,8 @@ run 'bundle install'
 generate 'rspec:install'
 generate 'cucumber:install --capybara --rspec --spork'
 generate 'pickle --path --email'
+
+run "rails g cover_me:install"
 
 run 'rm .gitignore'
 run 'rm app/assets/images/rails.png'
@@ -42,6 +44,7 @@ run 'rm app/models/.gitkeep'
 run 'rm config/application.rb'
 run 'rm config/routes.rb'
 run 'rm config/database.yml'
+run 'rm config/locales/en.yml'
 run 'rm db/seeds.rb'
 run 'rm public/index.html'
 run 'rm .rspec'
