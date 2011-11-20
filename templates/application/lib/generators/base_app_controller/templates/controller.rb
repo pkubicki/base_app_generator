@@ -21,6 +21,7 @@ class <%= controller_class_name %>Controller < ApplicationController
 
   def edit
     @<%= file_name %> = <%= orm_class.find(class_name, "params[:id]") %>
+    respond_with(@<%= file_name %>)
   end
 
   def create

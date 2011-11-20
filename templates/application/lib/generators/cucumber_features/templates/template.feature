@@ -25,7 +25,7 @@ Feature: <%= human_name %> management
 <% for attribute in attributes %>        | <%= singular_table_name %>_<%= attribute.name %> | <%= attribute.default %> |
 <% end %>
       And I press "Dodaj"
-    And I should see "<%= human_name.singularize %> został pomyślnie utworzony."
+    Then I should see "<%= human_name.singularize %> został pomyślnie utworzony."
       And <%= singular_table_name %> should exist with <%= attributes.map {|attribute| "#{attribute.name}: \"#{attribute.default}\"" }.join(', ') -%>
 
   Scenario: Successful edition of existing <%= singular_table_name %>

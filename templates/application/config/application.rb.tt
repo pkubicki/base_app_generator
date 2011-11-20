@@ -28,9 +28,7 @@ module <%= name_const %>
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[
-      Rails.root.join('config', 'locales', '{pl,en}', '*.yml'),
-      Rails.root.join('config', 'locales', '{pl,en}', '{models,resources}', '*.yml'),
-      Rails.root.join('config', 'locales', '{pl,en}', '{models,resources}', '*', '*.yml'),
+      Rails.root.join('config', 'locales', '**', '*.yml')
     ]
       
     config.i18n.default_locale = :pl

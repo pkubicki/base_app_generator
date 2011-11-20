@@ -14,8 +14,10 @@ pl:
         alert: 'Podane dane są nieprawidłowe lub niekompletne.'
       update:
         alert: 'Podane dane są nieprawidłowe lub niekompletne.'
+  helpers:
     submit:
       <%= singular_table_name %>:
         submit: Zapisz
         create: Dodaj
         update: Uaktualnij
+

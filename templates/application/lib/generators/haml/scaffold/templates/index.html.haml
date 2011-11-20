@@ -8,7 +8,7 @@
         = t(:'shared.lp')
 <% for attribute in attributes -%>
       %th
-        = f.sort_link :<%= attribute.name %>, <%= singular_table_name.capitalize %>.human_attribute_name(:<%= attribute.name %>)
+        = f.sort_link :<%= attribute.name %>, <%= singular_table_name.classify %>.human_attribute_name(:<%= attribute.name %>)
 <% end -%>
       %th
     %tr.search
